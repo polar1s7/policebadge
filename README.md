@@ -1,15 +1,10 @@
-## stevo_policebadge - 1.5.6
+## esx_stevo_policebadge - 1.5.6 
 Badges for your police to identify themselves!
 
-- Highly Configurable
-- 100% Optimized
-- Realistic
-- Supports All inventories!
-- Supports ESX, QBCore and  Qbox
+
+Modified for ESX usage only without use of steveo_lib :)
 
 Preview: https://youtu.be/HErP1xbOyoY
-<br>
-Documentation: https://docs.stevoscripts.com/free-scripts/stevo_policebadge
 <br>
 Discord: https://discord.gg/stevoscripts
 <br>
