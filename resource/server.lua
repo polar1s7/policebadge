@@ -1,20 +1,17 @@
-lib.versionCheck('stevoscriptsteam/stevo_policebadge')
-if not lib.checkDependency('stevo_lib', '1.6.7') then error('You need to update stevo_lib to the latest version for stevo_policebadges.') end
 lib.locale()
 
-local stevo_lib = exports['stevo_lib']:import()
 local config = lib.require('config')
-
 
 lib.callback.register("stevo_policebadge:retrieveInfo", function(source)
     local badge_data = {}
-    local identifier = stevo_lib.GetIdentifier(source)
-    local job = stevo_lib.GetPlayerJobInfo(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.identifier
+    local job = xPlayer.job
 
     
-    badge_data.rank = job.gradeName  or "Unknown" 
+    badge_data.rank = job.grade_name  or "Unknown" 
 
-    badge_data.name = stevo_lib.GetName(source)
+    badge_data.name = xPlayer.getName()
     
     
     local table = MySQL.single.await('SELECT `image` FROM `stevo_badge_photos` WHERE `identifier` = ? LIMIT 1', {
@@ -27,7 +24,8 @@ lib.callback.register("stevo_policebadge:retrieveInfo", function(source)
 end)
 
 lib.callback.register("stevo_policebadge:setBadgePhoto", function(source, photo)
-    local identifier = stevo_lib.GetIdentifier(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.identifier
 
 
     local image = MySQL.single.await('SELECT `image` FROM `stevo_badge_photos` WHERE `identifier` = ? LIMIT 1', {
@@ -71,7 +69,7 @@ AddEventHandler('onResourceStart', function(resource)
         lib.print.info('[Stevo Scripts] Deployed database table for stevo_badge_photos')
     end
 
-    stevo_lib.RegisterUsableItem(config.badge_item_name, function(source)
+    ESX.RegisterUsableItem(config.badge_item_name, function(source)
         TriggerClientEvent('stevo_policebadge:use', source)
     end)
 end)

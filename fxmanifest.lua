@@ -11,7 +11,9 @@ ui_page 'resource/web/index.html'
 
 shared_script {
     '@ox_lib/init.lua',
-    'config.lua'
+    'config.lua',
+    'resource/function.lua',
+    '@es_extended/imports.lua'
 }
 
 client_scripts {
@@ -37,6 +39,5 @@ files {
 
 dependencies {
     'ox_lib',
-    'oxmysql',
-    'stevo_lib'
+    'oxmysql'
 }
