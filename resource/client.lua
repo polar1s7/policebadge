@@ -85,8 +85,6 @@ end)
 
 RegisterCommand(config.set_image_command, function()
     local job = PlayerData.job.name
-    local gang = PlayerData.gang.name
-    
     local job_auth = false
     
     
