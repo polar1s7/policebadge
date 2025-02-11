@@ -50,8 +50,6 @@ local function showBadge()
             rot = vec3(-90.00,-180.00,78.999)
         },
     })
-
-    print('asdasd')
     
     CURRENTLY_USING_BADGE = false
 end
