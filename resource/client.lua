@@ -55,7 +55,7 @@ local function showBadge()
 end
 
 RegisterNetEvent('stevo_policebadge:use', function()
-    local job = PlayerData.job.name or ESX.GetPlayer
+    local job = PlayerData.job.name
     local swimming = IsPedSwimmingUnderWater(cache.ped)
     local incar = IsPedInAnyVehicle(cache.ped, true)
     local job_auth = false
